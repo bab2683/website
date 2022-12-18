@@ -13,6 +13,7 @@ node_modules/
 .vscode
 .rollup.cache
 tsconfig.tsbuildinfo
+coverage
 
 # Logs
 logs
@@ -25,6 +26,7 @@ lerna-debug.log*
 
 # Editor
 !.vscode/extensions.json
+!.vscode/settings.json
 .idea
 .DS_Store
 *.suo
