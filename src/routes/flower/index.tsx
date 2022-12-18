@@ -1,6 +1,7 @@
 import { component$, useClientEffect$, useStore, useStylesScoped$ } from '@builder.io/qwik';
 import { DocumentHead, useLocation } from '@builder.io/qwik-city';
-import styles from './flower.css?inline';
+
+import styles from './flower.scss?inline';
 
 export default component$(() => {
   useStylesScoped$(styles);
@@ -22,7 +23,7 @@ export default component$(() => {
   return (
     <>
       <input
-        type="range"
+        type='range'
         value={state.number}
         max={50}
         onInput$={(ev) => {
