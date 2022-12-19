@@ -1,0 +1,29 @@
+@use '~/styles/abstracts/helpers';
+
+.bg {
+  align-items: center;
+  background-attachment: fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+
+  &::before {
+    background-color: helpers.colors(main, 70%);
+    content: '';
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+}
+
+.content {
+  position: relative;
+}
+
+h1 {
+  position: relative;
+}

@@ -1,0 +1,17 @@
+@import 'the-new-css-reset/css/reset.css';
+@import 'normalize.css/normalize.css';
+
+* {
+  font-family: var(--misc-ff);
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  margin: 0;
+}

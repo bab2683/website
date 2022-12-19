@@ -1,3 +1,7 @@
+@use 'abstracts/helpers';
+
+@import 'base/all';
+
 /**
  * WHAT IS THIS FILE?
  *
@@ -11,12 +15,27 @@
   --qwik-light-blue: #18b6f6;
   --qwik-light-purple: #ac7ff4;
   --qwik-dark-purple: #713fc2;
+
+  // App colors
+  @each $name, $value in helpers.$colors {
+    --color-#{"" + $name}: #{$value};
+    --color-rgb-#{"" + $name}: #{map-get(helpers.$colors-rgb, $name)};
+  }
+
+  // Brand colors
+  @each $name, $value in helpers.$brand-colors {
+    --brand-color-#{"" + $name}: #{$value};
+  }
+
+  // Misc
+  @each $name, $value in helpers.$misc {
+    --misc-#{"" + $name}: #{$value};
+  }
 }
 
 body {
-  background-color: #fafafa;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-  padding: 20px 20px 40px;
+  background-color: var(--color-white);
+  margin: 0;
 }
 
 main {
@@ -24,13 +43,7 @@ main {
   border-radius: 5px;
   box-shadow: 0 0 130px -50px var(--qwik-light-purple);
   margin: 0 auto;
-  max-width: 760px;
   overflow: hidden;
-}
-
-h1,
-h2 {
-  margin: 0 0 5px;
 }
 
 .lightning {

@@ -1,0 +1,60 @@
+@use 'sass:map';
+@use 'sass:color';
+
+@function get-brand-shade-color($color, $mix-color) {
+  @return mix($mix-color, $color, 40%);
+}
+
+@function rgbCalculator($selected-color: null) {
+  @return color.red($selected-color), color.green($selected-color), color.blue($selected-color);
+}
+
+// App colors
+$colors: (
+  white: #fff,
+  main: #424343,
+);
+$colors-rgb: ();
+
+@each $key, $value in $colors {
+  $temp: (
+    $key: rgbCalculator($value),
+  );
+  $colors-rgb: map-merge($colors-rgb, $temp);
+}
+
+// Brand Colors
+$brand-colors: (
+  fb: #4267b2,
+  ln: #0077b5,
+  gh: #24292e,
+  gm: #d44638,
+);
+$mix-color: map-get($colors, white);
+
+@each $key, $value in $brand-colors {
+  $light-key: #{$key}-light;
+  $temp: (
+    $light-key: #{get-brand-shade-color($value, $mix-color)},
+  );
+  $brand-colors: map-merge($brand-colors, $temp);
+}
+
+/* Color retriever */
+@function colors($selected-color: null, $alpha: null) {
+  @if $selected-color {
+    $exist: map-has-key($colors, $selected-color);
+
+    @if map-has-key($colors, $selected-color) {
+      @if $alpha {
+        @return rgba(var(--color-rgb-#{$selected-color}, map-get($colors-rgb, $selected-color)), $alpha);
+      }
+
+      @return var(--color-#{$selected-color}, map-get($colors, $selected-color));
+    } @else {
+      @return getErrorMessage('colors', $colors);
+    }
+  } @else {
+    @error 'You need to pass a color';
+  }
+}

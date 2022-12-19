@@ -1,7 +1,8 @@
 header {
-  background: white;
-  border-bottom: 10px solid var(--qwik-dark-purple);
-  display: flex;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
 
   .logo {
     a {
